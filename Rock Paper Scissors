@@ -1,0 +1,32 @@
+import random
+
+def play(playchoice):
+    if playchoice == 'Y':
+        user_move = input("What is your move? Enter 'p' for paper, 's' for scissors, or 'r' for rock: ").lower()
+        
+        while (user_move != 'p' and user_move != 's' and user_move != 'r'):
+           user_move = input("Please try again. What is your move? Enter 'p' for paper, 's' for scissors, or 'r' for rock: ").lower()
+           
+        comp_move = random.choice(['r', 'p', 's'])
+    
+        if user_move == comp_move:
+           return 'Tie'
+    
+        if whoWins(user_move, comp_move):
+            return 'You win!'
+    
+        return 'Loser!'
+    
+def whoWins(player, computer):
+    if (player == 'p' and computer == 'r') or (player == 's' and computer == 'p') or (player == 'r' and computer == 's'):
+        return True
+    
+if __name__ == '__main__':
+    playchoice = input('Would you like to play rock, paper, scissors? Y or N: ').upper()
+
+    while playchoice == 'Y':
+        print(play(playchoice = 'Y'))
+        playchoice = input('Would you like to play again? Y or N: ').upper()
+
+    else:
+        print('Have a good one!')
